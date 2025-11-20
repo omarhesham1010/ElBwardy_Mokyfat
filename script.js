@@ -1,62 +1,12 @@
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
-    initSlider();
     initMobileMenu();
     initSmoothScrolling();
     initFormHandling();
     initScrollEffects();
     initGallery();
 });
-
-// Hero Slider Functionality
-function initSlider() {
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    const totalSlides = slides.length;
-
-    function showSlide(index) {
-        // Hide all slides
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-
-        // Show current slide
-        if (slides[index]) {
-            slides[index].classList.add('active');
-        }
-        if (dots[index]) {
-            dots[index].classList.add('active');
-        }
-    }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        showSlide(currentSlide);
-    }
-
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        showSlide(currentSlide);
-    }
-
-    // Auto slide every 5 seconds
-    setInterval(nextSlide, 5000);
-
-    // Make functions global for button clicks
-    window.changeSlide = function(direction) {
-        if (direction > 0) {
-            nextSlide();
-        } else {
-            prevSlide();
-        }
-    };
-
-    window.currentSlide = function(index) {
-        currentSlide = index - 1;
-        showSlide(currentSlide);
-    };
-}
 
 // Mobile Menu Functionality
 function initMobileMenu() {
@@ -239,12 +189,10 @@ function initScrollEffects() {
     const header = document.querySelector('.header');
     
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-            header.style.backdropFilter = 'blur(10px)';
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
         } else {
-            header.style.backgroundColor = 'var(--white)';
-            header.style.backdropFilter = 'none';
+            header.classList.remove('scrolled');
         }
     });
     
