@@ -132,9 +132,13 @@ p {
     color: var(--primary-color);
 }
 
-.nav-logo i {
+.nav-logo i,
+.nav-logo img {
     margin-left: 0.5rem;
     font-size: 2rem;
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
 }
 
 .nav-menu {
